@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome {{ name }}</h2>
+    <p>Balance: Rs. {{ balance }}</p>
+    <form method="post" action="/transaction">
+        Type:
+        <select name="type">
+            <option value="Deposit">Deposit</option>
+            <option value="Withdraw">Withdraw</option>
+        </select><br>
+        Amount: <input name="amount" type="number"><br>
+        <button type="submit">Submit</button>
+    </form>
+    <h3>Transactions</h3>
+    <ul>
+        {% for t in transactions %}
+        <li>{{ t[2] }} | {{ t[0] }} | Rs. {{ t[1] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/download_pdf">Download PDF Report</a><br>
+    <a href="/logout">Logout</a>
+</body>
+</html>
